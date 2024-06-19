@@ -1,4 +1,4 @@
-from fastapi import FastAPI , Body , HTTPException
+from fastapi import FastAPI , Body , HTTPException , Depends
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -26,7 +26,7 @@ todo_data = {
 }
 # 전체 조회
 @app.get("/todos", status_code= 200)
-def get_todos_handler(order:str | None = None):
+def get_todos_handler(order:str | None = None,):
         ret = list(todo_data.values())
         if order == "DESC":
                 return ret[::-1]
